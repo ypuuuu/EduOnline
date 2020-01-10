@@ -89,7 +89,7 @@ public class PageService {
         if (ObjectUtils.isEmpty(all)) {
             return new QueryResponseResult(CommonCode.FAIL, null);
         } else {
-            QueryResult<CmsPage> queryResult = new QueryResult<CmsPage>();
+            QueryResult<CmsPage> queryResult = new QueryResult<>();
             //数据列表
             queryResult.setList(all.getContent());
             //数据总记录数
@@ -190,6 +190,8 @@ public class PageService {
             cmsPageFindById.setPageWebPath(cmsPage.getPageWebPath());
             //更新物理路径
             cmsPageFindById.setPagePhysicalPath(cmsPage.getPagePhysicalPath());
+            //更新dataUrl
+            cmsPageFindById.setDataUrl(cmsPage.getDataUrl());
             //4.执行更新
             CmsPage save = cmsPageRepository.save(cmsPageFindById);
             LOGGER.debug("save: " + save);
